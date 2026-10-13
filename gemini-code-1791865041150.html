@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alia & SK - RPG Wedding Invitation</title>
+    <!-- Google Fonts for Retro RPG look -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0b0e14;
+            color: #f3f4f6;
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle, #1a2332 0%, #0b0e14 100%);
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 480px;
+            background: #111827;
+            border: 4px solid #f59e0b;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            margin: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Header / Title Screen */
+        .header-screen {
+            text-align: center;
+            padding: 25px 15px;
+            border-bottom: 3px dashed #374151;
+            background: linear-gradient(to bottom, #1f2937, #111827);
+        }
+
+        .pixel-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 16px;
+            color: #f59e0b;
+            text-shadow: 3px 3px #b45309;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .couple-names {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 20px;
+            color: #60a5fa;
+            text-shadow: 2px 2px #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #9ca3af;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 20px;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .section-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            color: #34d399;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Character Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat-card {
+            background: #1f2937;
+            border: 2px solid #4b5563;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .stat-card h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #f472b6;
+            margin-bottom: 6px;
+        }
+
+        .stat-card p {
+            font-size: 18px;
+            line-height: 1.3;
+            color: #d1d5db;
+        }
+
+        /* Scroll / Quest Log */
+        .quest-scroll {
+            background: #fef3c7;
+            color: #1f2937;
+            border: 3px solid #d97706;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .quest-scroll h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .quest-scroll ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .quest-scroll li {
+            margin-bottom: 6px;
+            font-size: 20px;
+            border-bottom: 1px dotted #d97706;
+            padding-bottom: 4px;
+        }
+
+        /* Audio Control & Progress */
+        .hud-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .audio-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 3px #1d4ed8;
+        }
+
+        .audio-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px #1d4ed8;
+        }
+
+        /* RSVP Action Section */
+        .rsvp-section {
+            text-align: center;
+            padding: 25px;
+            background: #111827;
+        }
+
+        .rsvp-prompt {
+            font-size: 24px;
+            color: #fbbf24;
+            margin-bottom: 15px;
+        }
+
+        .rsvp-btn {
+            display: inline-block;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border: 3px solid #047857;
+            border-radius: 6px;
+            box-shadow: 0 5px #065f46;
+            transition: all 0.1s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .rsvp-btn:hover {
+            background: #059669;
+        }
+
+        .rsvp-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px #065f46;
+        }
+
+        /* Footer */
+        .game-footer {
+            text-align: center;
+            padding: 12px;
+            font-size: 16px;
+            color: #6b7280;
+            background: #090d16;
+            border-top: 1px solid #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- HUD Bar: Celebration Status & Audio Toggle -->
+        <div class="hud-bar">
+            <span>HP: 9999 / 9999</span>
+            <button class="audio-btn" id="audioToggle" onclick="toggleMusic()">🎵 BGM: OFF</button>
+        </div>
+
+        <!-- Header Screen -->
+        <div class="header-screen">
+            <div class="pixel-title">⚔️ CO-OP ADVENTURE AWAITS ⚔️</div>
+            <div class="couple-names">ALIA & SK</div>
+            <div class="subtitle">Level: Forever | Class: Eternal Companions</div>
+        </div>
+
+        <!-- Character Select Stats -->
+        <div class="section">
+            <div class="section-title">🛡️ PARTY LEADERS</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>PLAYER 1</h3>
+                    <p><strong>Alia</strong><br>Master Planner & Support Mage</p>
+                </div>
+                <div class="stat-card">
+                    <h3>PLAYER 2</h3>
+                    <p><strong>SK</strong><br>Co-Op Champion & Shield Bearer</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quest Log (Event Details) -->
+        <div class="section">
+            <div class="quest-scroll">
+                <h3>📜 MAIN QUEST LOG</h3>
+                <p><strong>Objective:</strong> Wedding Ceremony & Feast</p>
+                <p><strong>Date:</strong> January 1, 2027</p>
+                <p><strong>Location:</strong> Majestique Palace Ampang</p>
+            </div>
+        </div>
+
+        <!-- Itinerary / Checkpoints -->
+        <div class="section">
+            <div class="section-title">🎒 QUEST CHECKPOINTS</div>
+            <div class="quest-scroll" style="background: #1f2937; color: #f3f4f6; border: 3px solid #4b5563;">
+                <h3 style="color: #34d399;">ITINERARY</h3>
+                <ul>
+                    <li><strong>01.</strong> Guest Party Assembly & Seating (10:00 AM)</li>
+                    <li><strong>02.</strong> Vows & Ring Exchange (11:00 AM)</li>
+                    <li><strong>03.</strong> The Grand Feast (1:00 PM)</li>
+                    <li><strong>04.</strong> Final Credits & Send-Off (4:00 PM)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RSVP Portal -->
+        <div class="rsvp-section">
+            <div class="rsvp-prompt">Will your party accept the quest?</div>
+            <!-- Connected Google Form Link -->
+            <a href="https://docs.google.com/forms/d/1ogWbDP09oLs6NQft5GRVZU0xltETXiGa-gM8Y803Fjs/viewform" target="_blank" class="rsvp-btn">
+                🟢 Accept Quest (RSVP)
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="game-footer">
+            CELEBRATION METER: 100% READY • PRESS START
+        </div>
+    </div>
+
+    <!-- Hidden audio element for optional background chiptune music -->
+    <audio id="bgm" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/arcade_room.ogg" type="audio/ogg">
+    </audio>
+
+    <script>
+        function toggleMusic() {
+            const audio = document.getElementById('bgm');
+            const btn = document.getElementById('audioToggle');
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = "🎵 BGM: ON";
+                btn.style.background = "#10b981";
+            } else {
+                audio.pause();
+                btn.textContent = "🎵 BGM: OFF";
+                btn.style.background = "#3b82f6";
+            }
+        }
+    </script>
+</body>
+</html>
